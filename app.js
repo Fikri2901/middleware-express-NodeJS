@@ -1,10 +1,18 @@
 const express = require('express')
 const expressLayouts = require('express-ejs-layouts')
 const app = express()
+const morgan = require('morgan')
 const port = 3000
 
 app.set('view engine', 'ejs')
 app.use(expressLayouts)
+app.use(express.static('public'))
+app.use(morgan('dev'))
+
+// app.use((req, res, next) => {
+//     console.log('Time: ', Date.now())
+//     next()
+// })
 
 app.get('/', (req, res) => {
 
